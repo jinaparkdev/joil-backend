@@ -37,7 +37,7 @@ class GlobalExceptionHandler {
             status = status.value(),
             message = message,
             path = request.getDescription(false).removePrefix("uri="),
-            timestamp = Instant.now().toString()
+            timestamp = Instant.now()
         )
         return ResponseEntity.status(status).body(errorResponse)
     }
@@ -47,5 +47,5 @@ data class ErrorResponse(
     val status: Int,
     val message: String,
     val path: String,
-    val timestamp: String = java.time.Instant.now().toString()
+    val timestamp: Instant
 )
